@@ -1,23 +1,15 @@
 /* eslint-disable no-undef */
+
 function onNewMessageComposeHandler(event) {
-  setSubject(event);
+  openDialog(event);
 }
 
-function setSubject(event) {
-  Office.context.mailbox.item.subject.setAsync(
-    "Set by an event-based add-in!",
-    {
-      asyncContext: event,
-    },
-    function (asyncResult) {
-      // Handle success or error.
-      if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-        console.error("Failed to set subject: " + JSON.stringify(asyncResult.error));
-      }
+function openDialog(event) {
+  console.log("openDialog was invoked.");
 
-      // Call event.completed() after all work is done.
-      asyncResult.asyncContext.completed();
-    });
+  Office.context.ui.displayDialogAsync("https://www.google.com", { asyncContext: event }, (result) => {
+    console.log(result);
+  });
 }
 
 // IMPORTANT: To ensure your add-in is supported in the Outlook client on Windows, remember to map the event handler name specified in the manifest's LaunchEvent element to its JavaScript counterpart.
