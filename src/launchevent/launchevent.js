@@ -7,8 +7,11 @@ function onNewMessageComposeHandler(event) {
 function openDialog(event) {
   console.log("openDialog was invoked.");
 
-  Office.context.ui.displayDialogAsync("https://www.google.com", { asyncContext: event }, (result) => {
-    console.log(result);
+  Office.context.ui.displayDialogAsync("https://www.google.com", { asyncContext: event }, (asyncResult) => {
+    console.log("this code is never reached");
+    console.log("this code is never reached");
+    console.log("this code is never reached");
+    console.log(asyncResult);
   });
 }
 
