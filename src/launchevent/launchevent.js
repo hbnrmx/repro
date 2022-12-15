@@ -1,10 +1,6 @@
 /* eslint-disable no-undef */
 
 function onNewMessageComposeHandler(event) {
-  openDialog(event);
-}
-
-function openDialog(event) {
   console.log("openDialog was invoked.");
 
   Office.context.ui.displayDialogAsync("https://www.google.com", { asyncContext: event }, (asyncResult) => {
